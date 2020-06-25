@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  selector:
+    matchLabels:
+      app: test-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: test-app
+    spec:
+      containers:
+      - name: test-app
+        image: nitinpai2000/asp_net_web_app_30:3
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "1G"
+          requests:
+            memory: "500Mi"
